@@ -26,16 +26,21 @@ browser.find_element_by_id("ap_email").send_keys(credentials["email"])
 browser.find_element_by_id("ap_password").send_keys(credentials["password"])
 browser.find_element_by_id("signInSubmit").click()
 
-list_items = browser.find_elements_by_class_name("g-item-sortable")
-for item in list_items:
-    name = item.find_element_by_class_name("g-itemImage").find_element_by_tag_name("a").get_attribute("title")
-    price = item.find_element_by_class_name("a-color-price").text
-    if len(price) > 1 and float(price[1:]) < 20:
-        formatted_price = colored('{0:<8}'.format(price), 'green')
-    else:
-        formatted_price = '{0:<8}'.format(price)
+def get_listed_prices():
+    list_items = browser.find_elements_by_class_name("g-item-sortable")
+    for item in list_items:
+        name = item.find_element_by_class_name("g-itemImage").find_element_by_tag_name("a").get_attribute("title")
+        price = item.find_element_by_class_name("a-color-price").text
+        if len(price) > 1 and float(price[1:]) < 20:
+            formatted_price = colored('{0:<8}'.format(price), 'green')
+        else:
+            formatted_price = '{0:<8}'.format(price)
 
-    print(formatted_price, name)
+        print(formatted_price, name)
+
+get_listed_prices()
+browser.get("https://www.amazon.com/gp/registry/wishlist/2HLZBE98I7FE6/")
+get_listed_prices()
 
 browser.close()
 
