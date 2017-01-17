@@ -23,5 +23,5 @@ Modify the URLs in the script to point to your Amazon wish lists.
 
 ## Asciinema
 
-![](https://asciinema.org/a/99569)
+[![asciicast](https://asciinema.org/a/99569.png)](https://asciinema.org/a/99569)
 
