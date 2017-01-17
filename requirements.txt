@@ -1,4 +1,3 @@
-CheckAmazonLists
 pyvirtualdisplay
 selenium
 termcolor
