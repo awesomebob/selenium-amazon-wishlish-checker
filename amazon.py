@@ -31,6 +31,7 @@ def get_listed_prices():
     for item in list_items:
         name = item.find_element_by_class_name("g-itemImage").find_element_by_tag_name("a").get_attribute("title")
         price = item.find_element_by_class_name("a-color-price").text
+        price = price.split()[0] if price else ''
         if len(price) > 1 and float(price[1:]) < 20:
             formatted_price = colored('{0:<8}'.format(price), 'green')
         else:
