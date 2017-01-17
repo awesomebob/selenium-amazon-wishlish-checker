@@ -1,5 +1,6 @@
 #! /usr/bin/python3
 
+from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -9,6 +10,9 @@ import json
 
 with open("amazon.json") as json_file:
     credentials = json.load(json_file)
+
+display = Display(visible=0, size=(800,600))
+display.start()
 
 browser = webdriver.Chrome()
 list_url = "https://www.amazon.com/gp/registry/wishlist/1SXW34VUHH6D9/"
@@ -44,4 +48,5 @@ browser.get("https://www.amazon.com/gp/registry/wishlist/2HLZBE98I7FE6/")
 get_listed_prices()
 
 browser.close()
+display.stop()
 
